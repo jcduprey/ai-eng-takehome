@@ -16,3 +16,4 @@ logs/
 
 # Downloaded CTU databases (zipped version tracked with Git LFS)
 *.duckdb
+framework/ai-eng-takehome.code-workspace

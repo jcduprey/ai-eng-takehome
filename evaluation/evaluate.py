@@ -49,6 +49,10 @@ from evaluation.compare import loosely_compare_dataframes
 from framework.agent import ANSWER_SUBMITTED_PREFIX, Agent, AgentEvent, EventType, Tool
 from framework.database import execute_query
 from framework.llm import OpenRouterConfig, TokenUsage
+from tools.choose_markdown import CHOOSE_MARKDOWN
+from tools.choose_schema import CHOOSE_SCHEMA
+from tools.load_columns import LOAD_COLUMNS
+from tools.load_rules import LOAD_RULES
 from tools.submit_answer import SUBMIT_ANSWER
 
 # =============================================================================
@@ -144,9 +148,11 @@ def create_tools() -> dict[str, Tool]:
         A dictionary mapping tool names to Tool objects.
     """
     return {
+        CHOOSE_SCHEMA.name: CHOOSE_SCHEMA,
+        CHOOSE_MARKDOWN.name: CHOOSE_MARKDOWN,
+        LOAD_RULES.name: LOAD_RULES,
+        LOAD_COLUMNS.name: LOAD_COLUMNS,
         SUBMIT_ANSWER.name: SUBMIT_ANSWER,
-        # Add your custom tools here:
-        # MY_TOOL.name: MY_TOOL,
     }
 
 

@@ -14,6 +14,10 @@ from rich.prompt import Prompt
 from framework.agent import Agent, Tool
 from framework.llm import OpenRouterConfig
 from framework.stream_printer import StreamPrinter
+from tools.choose_markdown import CHOOSE_MARKDOWN
+from tools.choose_schema import CHOOSE_SCHEMA
+from tools.load_columns import LOAD_COLUMNS
+from tools.load_rules import LOAD_RULES
 from tools.submit_answer import SUBMIT_ANSWER
 
 
@@ -24,8 +28,11 @@ def create_tools() -> dict[str, Tool]:
         Dictionary mapping tool names to Tool instances.
     """
     return {
+        CHOOSE_SCHEMA.name: CHOOSE_SCHEMA,
+        CHOOSE_MARKDOWN.name: CHOOSE_MARKDOWN,
+        LOAD_RULES.name: LOAD_RULES,
+        LOAD_COLUMNS.name: LOAD_COLUMNS,
         SUBMIT_ANSWER.name: SUBMIT_ANSWER,
-        # You can add your own tools here to test!
     }
 
 

@@ -150,7 +150,7 @@ def list_tables(schema_name: str) -> list[str] | None:
     finally:
         conn.close()
 
-def describe_table(schema_name: str, table_name: str) -> list[str]:
+def describe_table(schema_name: str, table_name: str, column_names_only=True) -> list[str]:
     """Describe a table's columns with their types.
 
     Args:
@@ -177,7 +177,10 @@ def describe_table(schema_name: str, table_name: str) -> list[str]:
         columns: list[str] = []
         for col_name, data_type, is_nullable in result:
             nullable_str = ", nullable" if is_nullable == "YES" else ""
-            columns.append(f"{col_name} ({data_type}{nullable_str})")
+            if column_names_only:
+                columns.append(col_name)
+            else:
+                columns.append(f"{col_name} ({data_type}{nullable_str})")
         return columns
     except Exception:
         return []
